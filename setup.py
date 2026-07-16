@@ -36,13 +36,9 @@ try:
 except (IOError, OSError):
     CHANGES = ""
 
-tests_require = ["supervisor"]
-if py_version < (3, 3):
-    tests_require.append("mock<4.0.0.dev0")
-
 setup(
     name="superguard",
-    version="0.0.1",
+    version="0.0.2",
     license="BSD-derived (http://www.repoze.org/LICENSE.txt)",
     description="Modern health check and process monitoring toolkit for supervisord",
     long_description=README + "\n\n" + CHANGES,
@@ -63,6 +59,10 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Topic :: System :: Boot",
         "Topic :: System :: Monitoring",
         "Topic :: System :: Systems Administration",
@@ -77,7 +77,9 @@ setup(
     install_requires=[
         "supervisor",
     ],
-    tests_require=tests_require,
+    extras_require={
+        "test": ["pytest"],
+    },
     test_suite="superguard.tests",
     entry_points="""\
       [console_scripts]

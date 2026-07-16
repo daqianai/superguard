@@ -8,7 +8,7 @@ from superguard.compat import StringIO
 from superguard.process_state_monitor import ProcessStateMonitor
 
 
-class TestProcessStateMonitor(ProcessStateMonitor):
+class _TestProcessStateMonitor(ProcessStateMonitor):
 
     process_state_events = ["PROCESS_STATE_EXITED"]
 
@@ -19,7 +19,7 @@ class TestProcessStateMonitor(ProcessStateMonitor):
 class ProcessStateMonitorTests(unittest.TestCase):
 
     def _get_target_class(self):
-        return TestProcessStateMonitor
+        return _TestProcessStateMonitor
 
     def _make_one_mocked(self, **kwargs):
         kwargs["stdin"] = StringIO()
@@ -111,7 +111,3 @@ pid:58597" % (pname, gname, expected)
         self.assertEqual(1.0, monitor.get_batch_minutes())
         monitor.handle_event(hdrs, payload)
         self.assertEqual(2.0, monitor.get_batch_minutes())
-
-
-if __name__ == "__main__":
-    unittest.main()
