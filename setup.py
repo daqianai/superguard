@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 try:
-    README = open(os.path.join(here, "README.md")).read()
+    README = open(os.path.join(here, "README.rst")).read()
 except (IOError, OSError):
     README = ""
 try:
@@ -42,7 +42,7 @@ setup(
     license="BSD-derived (http://www.repoze.org/LICENSE.txt)",
     description="Modern health check and process monitoring toolkit for supervisord",
     long_description=README + "\n\n" + CHANGES,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: No Input/Output (Daemon)",
